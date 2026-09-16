@@ -1,0 +1,33 @@
+{
+  "name": "decodelabs-project4",
+  "version": "1.0.0",
+  "description": "DecodeLabs Industrial Training Kit (Batch 2026) — Project 4: Frontend & Backend Integration",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "keywords": [
+    "decodelabs",
+    "fullstack",
+    "integration",
+    "frontend",
+    "backend",
+    "sqlite",
+    "crud",
+    "vanilla-js",
+    "rest-api"
+  ],
+  "author": "DecodeLabs",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

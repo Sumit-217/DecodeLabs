@@ -1,5 +1,6 @@
 # Node.js dependencies
 node_modules/
+package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -24,6 +25,17 @@ Project*/database/*.db
 Project*/database/*.db-shm
 Project*/database/*.db-wal
 
-# OS files
+# Progress and Requirements trackers (local only)
+*progress*.md
+*progress*
+*requirement*.md
+*requirements*
+*requiemnt*
+Project*/*progress*
+Project*/*requirement*
+
+# OS & Editor files
 .DS_Store
 Thumbs.db
+.vscode/
+.idea/
