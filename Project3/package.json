@@ -1,0 +1,30 @@
+{
+  "name": "decodelabs-project3",
+  "version": "1.0.0",
+  "description": "DecodeLabs Industrial Training Kit (Batch 2026) — Project 3: Database Integration",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "keywords": [
+    "decodelabs",
+    "database",
+    "sqlite",
+    "crud",
+    "backend",
+    "persistence"
+  ],
+  "author": "DecodeLabs",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

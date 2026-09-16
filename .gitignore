@@ -9,11 +9,20 @@ yarn-error.log*
 .env.local
 .env.*.local
 
-# Project 2 specific assets & temporary data
-Project2/Full_Stack_P2.pdf
-Project2/extracted_pages/
-Project2/pdf_text.txt
-Project2/data/test-db*.json
+# Project specific assets & temporary data
+*.pdf
+extracted_pages/
+Project*/extracted_pages/
+Project*/pdf_text.txt
+Project*/data/test-db*.json
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+Project*/database/*.db
+Project*/database/*.db-shm
+Project*/database/*.db-wal
 
 # OS files
 .DS_Store
