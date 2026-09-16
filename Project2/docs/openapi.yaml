@@ -1,0 +1,416 @@
+openapi: 3.0.3
+info:
+  title: DecodeLabs Project 2 - Backend API Development
+  description: |
+    Industrial Training Project 2: Backend API Development — "The Nervous System".
+    Demonstrates the IPO (Input-Process-Output) model, RESTful endpoints, input validation,
+    standard error handling, token-based authentication, authorization, rate limiting, and persistence.
+  version: 1.0.0
+  contact:
+    name: DecodeLabs Engineering Team
+    email: decodelabs.tech@gmail.com
+    url: https://www.decodelabs.tech
+
+servers:
+  - url: http://localhost:3000/api/v1
+    description: Local Development Server
+
+paths:
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Returns service health status, uptime, and system metadata.
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /tasks:
+    get:
+      summary: Retrieve all tasks
+      description: Returns a list of tasks with optional filtering by status and priority.
+      parameters:
+        - name: status
+          in: query
+          description: Filter tasks by lifecycle status
+          schema:
+            type: string
+            enum: [pending, in-progress, completed]
+        - name: priority
+          in: query
+          description: Filter tasks by priority tier
+          schema:
+            type: string
+            enum: [low, medium, high]
+      responses:
+        '200':
+          description: A list of tasks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListResponse'
+        '429':
+          $ref: '#/components/responses/429RateLimit'
+
+    post:
+      summary: Create a new task
+      description: Validates and persists a new task. Requires User or Admin authentication.
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTaskRequest'
+      responses:
+        '201':
+          description: Task successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSingleResponse'
+        '400':
+          $ref: '#/components/responses/400ValidationError'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '429':
+          $ref: '#/components/responses/429RateLimit'
+
+  /tasks/{id}:
+    get:
+      summary: Get task by ID
+      description: Fetches a single task by its unique numeric ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Positive integer task ID
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Task found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSingleResponse'
+        '400':
+          $ref: '#/components/responses/400ValidationError'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '429':
+          $ref: '#/components/responses/429RateLimit'
+
+    put:
+      summary: Update task by ID
+      description: Updates properties of an existing task. Requires User or Admin authentication.
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Positive integer task ID
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTaskRequest'
+      responses:
+        '200':
+          description: Task updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskSingleResponse'
+        '400':
+          $ref: '#/components/responses/400ValidationError'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '429':
+          $ref: '#/components/responses/429RateLimit'
+
+    delete:
+      summary: Delete task by ID
+      description: Removes a task permanently from storage. Requires Admin authentication.
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Positive integer task ID
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '204':
+          description: Task deleted successfully. No content returned.
+        '400':
+          $ref: '#/components/responses/400ValidationError'
+        '401':
+          $ref: '#/components/responses/401Unauthorized'
+        '403':
+          $ref: '#/components/responses/403Forbidden'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '429':
+          $ref: '#/components/responses/429RateLimit'
+
+  /simulate-error:
+    post:
+      summary: Simulate internal server error
+      description: Deliberately throws an unhandled error to verify centralized 500 error handling (disabled in production mode).
+      responses:
+        '500':
+          $ref: '#/components/responses/500InternalError'
+        '403':
+          $ref: '#/components/responses/403Forbidden'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API Key as Bearer token (e.g. demo-user-key, demo-admin-key)
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API Key header (e.g. demo-user-key, demo-admin-key)
+
+  schemas:
+    Task:
+      type: object
+      required:
+        - id
+        - title
+        - status
+        - priority
+        - createdAt
+        - updatedAt
+      properties:
+        id:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: Build REST API
+        description:
+          type: string
+          example: Implement DecodeLabs Project 2 backend
+        status:
+          type: string
+          enum: [pending, in-progress, completed]
+          example: pending
+        priority:
+          type: string
+          enum: [low, medium, high]
+          example: high
+        createdAt:
+          type: string
+          format: date-time
+          example: '2026-09-16T09:00:00.000Z'
+        updatedAt:
+          type: string
+          format: date-time
+          example: '2026-09-16T09:00:00.000Z'
+
+    CreateTaskRequest:
+      type: object
+      required:
+        - title
+      properties:
+        title:
+          type: string
+          minLength: 3
+          maxLength: 100
+          example: Implement Gatekeeper Validation
+        description:
+          type: string
+          maxLength: 500
+          example: Syntactic and semantic validation middleware for tasks
+        status:
+          type: string
+          enum: [pending, in-progress, completed]
+          default: pending
+          example: pending
+        priority:
+          type: string
+          enum: [low, medium, high]
+          default: medium
+          example: high
+
+    UpdateTaskRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 3
+          maxLength: 100
+          example: Updated Task Title
+        description:
+          type: string
+          maxLength: 500
+          example: Updated task description details
+        status:
+          type: string
+          enum: [pending, in-progress, completed]
+          example: in-progress
+        priority:
+          type: string
+          enum: [low, medium, high]
+          example: high
+
+    TaskListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+
+    TaskSingleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          $ref: '#/components/schemas/Task'
+
+    HealthResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            status:
+              type: string
+              example: healthy
+            uptime:
+              type: number
+              example: 45.2
+            timestamp:
+              type: string
+              example: '2026-09-16T09:30:00.000Z'
+
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          required:
+            - code
+            - message
+          properties:
+            code:
+              type: string
+              example: VALIDATION_ERROR
+            message:
+              type: string
+              example: Invalid request data
+            fields:
+              type: object
+              additionalProperties:
+                type: string
+              example:
+                title: Title is required.
+
+  responses:
+    400ValidationError:
+      description: Bad Request / Input Validation Failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            success: false
+            error:
+              code: VALIDATION_ERROR
+              message: Input validation failed. Please review the provided fields.
+              fields:
+                title: Title must be at least 3 characters long.
+
+    401Unauthorized:
+      description: Unauthorized / Missing or Invalid Credentials
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            success: false
+            error:
+              code: UNAUTHORIZED
+              message: Authentication required. Please provide a valid Bearer token or API key.
+
+    403Forbidden:
+      description: Forbidden / Insufficient Privileges
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            success: false
+            error:
+              code: FORBIDDEN
+              message: You do not have permission to perform this action.
+
+    404NotFound:
+      description: Resource Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            success: false
+            error:
+              code: NOT_FOUND
+              message: Task with ID 999999 not found.
+
+    429RateLimit:
+      description: Rate Limit Exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            success: false
+            error:
+              code: RATE_LIMIT_EXCEEDED
+              message: Too many requests. Please try again later.
+
+    500InternalError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            success: false
+            error:
+              code: INTERNAL_SERVER_ERROR
+              message: An unexpected internal server error occurred.

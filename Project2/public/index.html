@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DecodeLabs Project 2 — Developer Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Top Navigation Header -->
+    <header class="navbar">
+      <div class="brand-group">
+        <div class="pulse-indicator" id="systemPulse"></div>
+        <div class="brand-text">
+          <span class="brand-name">DecodeLabs</span>
+          <span class="brand-project">Project 2: The Nervous System</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="server-badge" id="healthBadge">
+          <span class="status-dot healthy"></span>
+          <span id="healthText">Connecting...</span>
+        </div>
+        <a href="/openapi.yaml" target="_blank" class="btn-secondary" id="openapiBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          OpenAPI YAML
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-content">
+      <!-- Quick Test Bar -->
+      <section class="quick-test-section">
+        <div class="section-title">
+          <span class="pulse-icon">⚡</span> Quick Test Scenarios (All Status Codes)
+        </div>
+        <div class="preset-buttons-grid">
+          <button class="preset-btn btn-200" id="preset200">
+            <span class="badge-code">200</span> GET All Tasks
+          </button>
+          <button class="preset-btn btn-201" id="preset201">
+            <span class="badge-code">201</span> POST Valid Task
+          </button>
+          <button class="preset-btn btn-400" id="preset400">
+            <span class="badge-code">400</span> Invalid Input
+          </button>
+          <button class="preset-btn btn-401" id="preset401">
+            <span class="badge-code">401</span> Unauthorized
+          </button>
+          <button class="preset-btn btn-403" id="preset403">
+            <span class="badge-code">403</span> Forbidden
+          </button>
+          <button class="preset-btn btn-404" id="preset404">
+            <span class="badge-code">404</span> Not Found
+          </button>
+          <button class="preset-btn btn-429" id="preset429">
+            <span class="badge-code">429</span> Rate Limit Trip
+          </button>
+          <button class="preset-btn btn-500" id="preset500">
+            <span class="badge-code">500</span> Internal Error
+          </button>
+        </div>
+      </section>
+
+      <!-- Grid: Left = Request & Live Tasks, Right = Response Inspector -->
+      <div class="workspace-grid">
+        <!-- Left Column -->
+        <div class="workspace-col left-col">
+          <!-- Request Panel -->
+          <div class="card request-panel">
+            <div class="card-header">
+              <h2>HTTP Request Console</h2>
+              <span class="card-subtitle">Test any custom endpoint</span>
+            </div>
+
+            <div class="form-group row-group">
+              <div class="method-select-wrap">
+                <label for="httpMethod">Method</label>
+                <select id="httpMethod" class="input-select">
+                  <option value="GET">GET</option>
+                  <option value="POST">POST</option>
+                  <option value="PUT">PUT</option>
+                  <option value="DELETE">DELETE</option>
+                </select>
+              </div>
+              <div class="url-input-wrap">
+                <label for="endpointPath">Endpoint URL</label>
+                <input type="text" id="endpointPath" class="input-text" value="/api/v1/tasks">
+              </div>
+            </div>
+
+            <!-- Auth Options -->
+            <div class="form-group">
+              <label for="authSelect">Authentication Credentials</label>
+              <div class="auth-bar">
+                <select id="authSelect" class="input-select">
+                  <option value="none">No Auth (Public)</option>
+                  <option value="user" selected>User Key (Bearer demo-user-key)</option>
+                  <option value="admin">Admin Key (Bearer demo-admin-key)</option>
+                  <option value="custom">Custom Token...</option>
+                </select>
+                <input type="text" id="customTokenInput" class="input-text hidden" placeholder="Enter custom bearer token">
+              </div>
+            </div>
+
+            <!-- Request Body Panel -->
+            <div class="form-group" id="bodyGroup">
+              <div class="label-with-action">
+                <label for="requestBody">Request Body (JSON)</label>
+                <div class="body-actions">
+                  <button type="button" class="btn-text" id="formatJsonBtn">Format</button>
+                  <button type="button" class="btn-text" id="samplePayloadBtn">Sample Body</button>
+                  <button type="button" class="btn-text" id="clearBodyBtn">Clear</button>
+                </div>
+              </div>
+              <textarea id="requestBody" class="input-textarea" rows="6" spellcheck="false">{
+  "title": "Build REST API",
+  "description": "Implement DecodeLabs Project 2 backend",
+  "status": "pending",
+  "priority": "high"
+}</textarea>
+            </div>
+
+            <div class="action-bar">
+              <button class="btn-primary" id="sendRequestBtn">
+                <span id="btnSpinner" class="spinner hidden"></span>
+                <span id="btnText">Send Request</span>
+                <span class="key-hint">Ctrl + ↵</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Task Persistence Table -->
+          <div class="card resource-card">
+            <div class="card-header space-between">
+              <div>
+                <h2>Live Database Records (data/db.json)</h2>
+                <span class="card-subtitle">Real-time local state reflection</span>
+              </div>
+              <button class="btn-secondary btn-sm" id="refreshTasksBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                Refresh Data
+              </button>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Created</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="tasksTableBody">
+                  <tr>
+                    <td colspan="6" class="text-center">Loading tasks...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Response Inspector -->
+        <div class="workspace-col right-col">
+          <div class="card response-card">
+            <div class="card-header space-between">
+              <div class="response-header-left">
+                <h2>HTTP Response Inspector</h2>
+                <div class="meta-tags">
+                  <span class="status-badge" id="responseStatusBadge">Status: Ready</span>
+                  <span class="latency-badge" id="responseLatencyBadge">-- ms</span>
+                  <span class="time-badge" id="responseTimestampBadge">--:--:--</span>
+                </div>
+              </div>
+              <button class="btn-secondary btn-sm" id="copyResponseBtn">Copy JSON</button>
+            </div>
+
+            <!-- Response Viewer -->
+            <div class="response-body-wrap">
+              <pre id="responseJsonViewer" class="json-code-block"><code>// Responses from the server will appear here.
+// Click any quick test button above or click 'Send Request'.</code></pre>
+            </div>
+
+            <!-- Architecture Trace / Pipeline Info -->
+            <div class="pipeline-card">
+              <div class="pipeline-title">Architectural Flow (The Nervous System)</div>
+              <div class="pipeline-steps">
+                <span class="step-badge">1. Logger</span> →
+                <span class="step-badge">2. Helmet</span> →
+                <span class="step-badge">3. Rate Limit</span> →
+                <span class="step-badge">4. AuthN/Z</span> →
+                <span class="step-badge">5. Validator</span> →
+                <span class="step-badge">6. Controller</span> →
+                <span class="step-badge">7. Service</span> →
+                <span class="step-badge">8. Repository</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>DecodeLabs Industrial Training 2026 | Full Stack Development Project 2</div>
+      <div>Designed with Architectural Integrity & Predictability</div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

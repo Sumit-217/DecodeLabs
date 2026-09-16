@@ -1,0 +1,27 @@
+{
+  "name": "decodelabs-project2-backend-api",
+  "version": "1.0.0",
+  "description": "DecodeLabs Industrial Training Project 2 - Backend API Development (The Nervous System)",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "decodelabs",
+    "rest-api",
+    "express",
+    "backend",
+    "industrial-training"
+  ],
+  "author": "DecodeLabs Intern",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "helmet": "^8.3.0"
+  }
+}

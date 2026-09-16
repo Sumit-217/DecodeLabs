@@ -1,0 +1,16 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Build REST API",
+      "description": "Implement DecodeLabs Project 2 backend",
+      "status": "pending",
+      "priority": "high",
+      "createdAt": "2026-09-16T09:00:00.000Z",
+      "updatedAt": "2026-09-16T09:00:00.000Z"
+    }
+  ],
+  "metadata": {
+    "nextTaskId": 2
+  }
+}

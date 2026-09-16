@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DecodeLabs | Master Production-Grade Software Engineering, Full Stack Architecture, and AI Systems. Industrial Training & Technology Labs — Batch 2026.">
+  <meta name="author" content="DecodeLabs">
+  <title>DecodeLabs | Industrial Software Engineering & Technology Labs</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/macro-grid.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="app-wrapper">
+
+    <header class="site-header" role="banner">
+      <div class="layout-container header-grid">
+        <a href="#" class="brand-logo" aria-label="DecodeLabs Home Page">
+          <div class="brand-icon">DL</div>
+          <span>Decode<span style="color: var(--color-mocha-primary);">Labs</span></span>
+          <span class="brand-badge">Batch 2026</span>
+        </a>
+
+        <nav class="nav-menu desktop-only" aria-label="Main Landing Navigation">
+          <a href="#hero" class="nav-link active">Overview</a>
+          <a href="#programs" class="nav-link">Training Tracks</a>
+          <a href="#pillars" class="nav-link">Pillars & Blueprint</a>
+          <a href="#roadmap" class="nav-link">Curriculum Roadmap</a>
+          <a href="#inspector" class="nav-link">Lab Inspector</a>
+        </nav>
+
+        <div class="header-actions">
+          <button id="themeToggle" class="btn-icon" aria-label="Toggle Warm Light / Grounded Mocha Dark Theme" title="Toggle Theme">
+            <span id="themeIcon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </span>
+          </button>
+
+          <a href="#apply" class="btn btn-primary desktop-only" style="padding: var(--space-2xs) var(--space-sm);">Apply Now</a>
+
+          <button id="mobileNavToggle" class="btn-icon mobile-nav-toggle" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open Navigation Menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div id="mobileDrawer" class="mobile-drawer" aria-hidden="true" role="dialog" aria-label="Mobile Navigation Menu">
+      <nav aria-label="Mobile Navigation Drawer">
+        <ul style="display: flex; flex-direction: column; gap: var(--space-md);">
+          <li><a href="#hero" class="nav-link" style="font-size: var(--font-size-lg);">Overview</a></li>
+          <li><a href="#programs" class="nav-link" style="font-size: var(--font-size-lg);">Training Tracks</a></li>
+          <li><a href="#pillars" class="nav-link" style="font-size: var(--font-size-lg);">Pillars & Blueprint</a></li>
+          <li><a href="#roadmap" class="nav-link" style="font-size: var(--font-size-lg);">Curriculum Roadmap</a></li>
+          <li><a href="#inspector" class="nav-link" style="font-size: var(--font-size-lg);">Lab Inspector</a></li>
+        </ul>
+      </nav>
+      <div style="margin-top: auto; padding-top: var(--space-md); border-top: 1px solid var(--color-border); display: flex; flex-direction: column; gap: var(--space-sm);">
+        <a href="#apply" class="btn btn-primary" style="width: 100%;">Apply for Batch 2026</a>
+        <p style="font-size: var(--font-size-xs); color: var(--color-text-muted);">DecodeLabs Industrial Training • Greater Lucknow, India</p>
+      </div>
+    </div>
+
+    <main class="layout-container main-grid" id="main-content">
+      <div class="content-section">
+        <section id="hero" class="hero-layout" aria-labelledby="hero-heading">
+          <div>
+            <span class="badge badge-mocha" style="margin-bottom: var(--space-xs);">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              Digital Craftsmanship • Project 1
+            </span>
+            <h1 id="hero-heading" style="font-size: var(--font-size-hero); margin-bottom: var(--space-xs); line-height: 1.1;">
+              Project 1: The Responsive Layout — Architecting for the Mobile Web
+            </h1>
+            <p style="font-size: var(--font-size-base); margin-bottom: var(--space-md); color: var(--color-text-secondary);">
+              DecodeLabs Industrial Training & Technology Labs equips engineers with real-world software craftsmanship. Learn to architect scalable, mobile-first web platforms with fluid CSS Grid, Flexbox micro-layouts, WCAG 2.1 AA accessibility, and zero-framework bloat.
+            </p>
+            <div style="display: flex; gap: var(--space-xs); flex-wrap: wrap;">
+              <a href="#pillars" class="btn btn-primary" id="explore-blueprint-btn">
+                Explore Blueprint
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+              <a href="#roadmap" class="btn btn-secondary" id="view-guidelines-btn">View Guidelines</a>
+            </div>
+          </div>
+
+          <div style="background-color: var(--color-mocha-surface); border-radius: var(--radius-md); padding: var(--space-md); border: 1px dashed var(--color-mocha-primary);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xs);">
+              <span style="font-size: var(--font-size-xs); font-family: var(--font-family-mono); font-weight: 700; color: var(--color-mocha-dark);">PLATFORM SPECIFICATIONS</span>
+              <span class="badge badge-ethereal">Industrial Standards</span>
+            </div>
+            
+            <div style="margin-bottom: var(--space-xs);">
+              <div style="display: flex; justify-content: space-between; font-size: var(--font-size-xs); font-weight: 600; margin-bottom: 2px;">
+                <span>Qualification Landmark Progress</span>
+                <span style="color: var(--color-mocha-dark);">100% Verified</span>
+              </div>
+              <div class="progress-bar-track">
+                <div class="progress-bar-fill" style="width: 100%;"></div>
+              </div>
+            </div>
+
+            <ul style="display: flex; flex-direction: column; gap: var(--space-2xs); font-size: var(--font-size-xs);">
+              <li style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px;">
+                <span style="color: var(--color-text-muted);">Training Track:</span>
+                <strong>Full Stack + AI System Design</strong>
+              </li>
+              <li style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px;">
+                <span style="color: var(--color-text-muted);">Architecture:</span>
+                <strong>Mobile-First & Clean Code</strong>
+              </li>
+              <li style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px;">
+                <span style="color: var(--color-text-muted);">Mentorship:</span>
+                <strong>1-on-1 Senior Code Reviews</strong>
+              </li>
+              <li style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px;">
+                <span style="color: var(--color-text-muted);">Core Stack:</span>
+                <strong>HTML5 / CSS Grid / JS / Java</strong>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="programs" aria-labelledby="programs-heading">
+          <div style="margin-bottom: var(--space-md);">
+            <span class="badge badge-ethereal">Engineering Tracks</span>
+            <h2 id="programs-heading" style="font-size: var(--font-size-2xl); margin-top: var(--space-2xs);">
+              Our Core Training Pillars
+            </h2>
+            <p style="font-size: var(--font-size-sm);">Standardized training & industrial project kits designed for modern software engineers.</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-md);">
+            <article class="pillar-card">
+              <div class="card-header">
+                <div class="card-icon">⚡</div>
+                <span class="badge badge-mocha">Track 01</span>
+              </div>
+              <h3 class="card-title">Full Stack Web Architecture</h3>
+              <p style="font-size: var(--font-size-sm);">
+                Master production frontend engineering using semantic HTML5, 2D CSS Grid macro layouts, Flexbox micro components, and RESTful Java backend APIs.
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">CSS Grid & Flex</span>
+                <span class="card-tag">Java REST APIs</span>
+                <span class="card-tag">Clean Architecture</span>
+              </div>
+            </article>
+
+            <article class="pillar-card">
+              <div class="card-header">
+                <div class="card-icon">🧠</div>
+                <span class="badge badge-ethereal">Track 02</span>
+              </div>
+              <h3 class="card-title">AI System Design & Engineering</h3>
+              <p style="font-size: var(--font-size-sm);">
+                Engineer autonomous agent workflows, integrate LLM pipelines, implement vector search mechanics, and build real-time AI-assisted evaluation platforms.
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">LLM Pipelines</span>
+                <span class="card-tag">System Design</span>
+                <span class="card-tag">Real-Time Data</span>
+              </div>
+            </article>
+
+            <article class="pillar-card">
+              <div class="card-header">
+                <div class="card-icon">🛡️</div>
+                <span class="badge badge-mocha">Track 03</span>
+              </div>
+              <h3 class="card-title">Industrial Rigor & DevOps</h3>
+              <p style="font-size: var(--font-size-sm);">
+                Containerize full stack applications with Docker, implement CI/CD pipelines, ensure WCAG 2.1 AA accessibility, and optimize web vitals (LCP/CLS).
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">Docker & CI/CD</span>
+                <span class="card-tag">WCAG 2.1 AA</span>
+                <span class="card-tag">Cloud Deploy</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="pillars" aria-labelledby="pillars-heading">
+          <div style="margin-bottom: var(--space-md);">
+            <span class="badge badge-mocha">Strategy & Specifications</span>
+            <h2 id="pillars-heading" style="font-size: var(--font-size-2xl); margin-top: var(--space-2xs);">
+              Project 1 Strategy & The Blueprint
+            </h2>
+            <p style="font-size: var(--font-size-sm);">The three mandatory foundational pillars governed by the DecodeLabs architecture standard.</p>
+          </div>
+
+          <div class="pillars-grid">
+            <article class="pillar-card" id="pillar-1-card">
+              <div class="card-header">
+                <div class="card-icon">📐</div>
+                <span class="badge badge-mocha">Pillar 01</span>
+              </div>
+              <h3 class="card-title">Strategy & The Blueprint</h3>
+              <p style="font-size: var(--font-size-sm);">
+                User Empathy Mapping analyzing user behaviors (<em>Says, Thinks, Does, Feels</em>) combined with Low-Fidelity Wireframing principles and Grayscale structure validation.
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">Empathy Mapping</span>
+                <span class="card-tag">Grayscale Validation</span>
+                <span class="card-tag">Mobile-First</span>
+              </div>
+            </article>
+
+            <article class="pillar-card" id="pillar-2-card">
+              <div class="card-header">
+                <div class="card-icon">🎨</div>
+                <span class="badge badge-ethereal">Pillar 02</span>
+              </div>
+              <h3 class="card-title">Visual Design & 2025 Aesthetics</h3>
+              <p style="font-size: var(--font-size-sm);">
+                Implementation of 2025 warmth & grounding design tokens: Mocha Mousse (<code style="font-family: var(--font-family-mono);">#A8866F</code>), Ethereal Blue (<code style="font-family: var(--font-family-mono);">#4A709C</code>), and Moonlit Grey (<code style="font-family: var(--font-family-mono);">#F2F0EA</code>) with fluid clamp typography.
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">Mocha Mousse</span>
+                <span class="card-tag">Ethereal Blue</span>
+                <span class="card-tag">Fluid Clamp</span>
+              </div>
+            </article>
+
+            <article class="pillar-card" id="pillar-3-card">
+              <div class="card-header">
+                <div class="card-icon">🛠️</div>
+                <span class="badge badge-mocha">Pillar 03</span>
+              </div>
+              <h3 class="card-title">Implementation: Foundation & Framework</h3>
+              <p style="font-size: var(--font-size-sm);">
+                Strict HTML5 landmark tags (&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;article&gt;, &lt;aside&gt;, &lt;footer&gt;), 2D CSS Grid macro layout, and Flexbox micro-alignment.
+              </p>
+              <div class="card-tags">
+                <span class="card-tag">HTML5 Landmarks</span>
+                <span class="card-tag">2D CSS Grid</span>
+                <span class="card-tag">Flexbox Micro</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="roadmap" class="roadmap-container" aria-labelledby="roadmap-heading">
+          <div>
+            <span class="badge badge-ethereal">Interactive Curriculum</span>
+            <h2 id="roadmap-heading" style="font-size: var(--font-size-2xl); margin-top: var(--space-2xs);">
+              6-Step Execution Roadmap
+            </h2>
+            <p style="font-size: var(--font-size-sm);">Click through the mandatory 6-stage engineering curriculum sequence.</p>
+          </div>
+
+          <div class="roadmap-nav" role="tablist" aria-label="Curriculum Execution Roadmap">
+            <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="phase-1" id="tab-phase-1" data-tab="phase-1">01. Discovery</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="phase-2" id="tab-phase-2" data-tab="phase-2">02. Wireframe</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="phase-3" id="tab-phase-3" data-tab="phase-3">03. Semantics</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="phase-4" id="tab-phase-4" data-tab="phase-4">04. CSS Grid/Flex</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="phase-5" id="tab-phase-5" data-tab="phase-5">05. Logic</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="phase-6" id="tab-phase-6" data-tab="phase-6">06. Audit</button>
+          </div>
+
+          <div id="phase-1" class="roadmap-panel active" role="tabpanel" aria-labelledby="tab-phase-1">
+            <h3 style="font-size: var(--font-size-lg); color: var(--color-mocha-primary);">01. Discovery — Defining "How Might We"</h3>
+            <p>Establish empathy maps, core user personas, and clear problem statements before writing code. Prioritize mobile content flow.</p>
+            <div style="background-color: var(--color-bg-alt); padding: var(--space-sm); border-radius: var(--radius-sm); border-left: 3px solid var(--color-mocha-primary);">
+              <strong>Key Deliverable:</strong> User Empathy Map (<em>Says, Thinks, Does, Feels</em>) & functional requirement specification.
+            </div>
+          </div>
+
+          <div id="phase-2" class="roadmap-panel" role="tabpanel" aria-labelledby="tab-phase-2" hidden>
+            <h3 style="font-size: var(--font-size-lg); color: var(--color-ethereal-primary);">02. Wireframe — Mobile-First Grayscale Validation</h3>
+            <p>Construct low-fidelity wireframes in single-column mobile viewports. Validate layout spacing in grayscale to guarantee visual hierarchy.</p>
+            <div style="background-color: var(--color-bg-alt); padding: var(--space-sm); border-radius: var(--radius-sm); border-left: 3px solid var(--color-ethereal-primary);">
+              <strong>Key Deliverable:</strong> Grayscale wireframe layouts for mobile (&lt;768px&gt;) and desktop (≥1024px).
+            </div>
+          </div>
+
+          <div id="phase-3" class="roadmap-panel" role="tabpanel" aria-labelledby="tab-phase-3" hidden>
+            <h3 style="font-size: var(--font-size-lg); color: var(--color-mocha-primary);">03. Semantics — HTML5 Structural Landmarks</h3>
+            <p>Build the document backbone using native HTML5 landmark elements (&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;article&gt;, &lt;aside&gt;, &lt;footer&gt;). Overuse of generic divs is explicitly banned.</p>
+            <div style="background-color: var(--color-bg-alt); padding: var(--space-sm); border-radius: var(--radius-sm); border-left: 3px solid var(--color-mocha-primary);">
+              <strong>Key Deliverable:</strong> W3C-compliant semantic HTML markup structure.
+            </div>
+          </div>
+
+          <div id="phase-4" class="roadmap-panel" role="tabpanel" aria-labelledby="tab-phase-4" hidden>
+            <h3 style="font-size: var(--font-size-lg); color: var(--color-ethereal-primary);">04. CSS Grid & Flexbox — 2025 Palette & Layouts</h3>
+            <p>Apply 2D CSS Grid for macro layout framing and Flexbox for micro-component alignment. Apply Mocha Mousse, Ethereal Blue, and fluid clamp typography.</p>
+            <div style="background-color: var(--color-bg-alt); padding: var(--space-sm); border-radius: var(--radius-sm); border-left: 3px solid var(--color-ethereal-primary);">
+              <strong>Key Deliverable:</strong> Modular CSS architecture (variables.css, reset.css, macro-grid.css, components.css, responsive.css).
+            </div>
+          </div>
+
+          <div id="phase-5" class="roadmap-panel" role="tabpanel" aria-labelledby="tab-phase-5" hidden>
+            <h3 style="font-size: var(--font-size-lg); color: var(--color-mocha-primary);">05. Logic — State Management & Interactivity</h3>
+            <p>Develop native ES6 JavaScript logic for mobile drawer toggle, real-time breakpoint window resize observer, roadmap tab switcher, and Grounded Dark mode persistence.</p>
+            <div style="background-color: var(--color-bg-alt); padding: var(--space-sm); border-radius: var(--radius-sm); border-left: 3px solid var(--color-mocha-primary);">
+              <strong>Key Deliverable:</strong> Modular JS scripts (nav.js, breakpoint-widget.js, app.js).
+            </div>
+          </div>
+
+          <div id="phase-6" class="roadmap-panel" role="tabpanel" aria-labelledby="tab-phase-6" hidden>
+            <h3 style="font-size: var(--font-size-lg); color: var(--color-ethereal-primary);">06. Audit — Performance & WCAG Accessibility</h3>
+            <p>Execute WCAG 2.1 AA accessibility audit, keyboard focus state verification, LCP/CLS optimization, and multi-device viewport testing.</p>
+            <div style="background-color: var(--color-bg-alt); padding: var(--space-sm); border-radius: var(--radius-sm); border-left: 3px solid var(--color-ethereal-primary);">
+              <strong>Key Deliverable:</strong> Verified WCAG 2.1 AA compliance & zero framework production score.
+            </div>
+          </div>
+        </section>
+
+        <section id="apply" style="background: linear-gradient(135deg, var(--color-mocha-primary), var(--color-mocha-dark)); border-radius: var(--radius-lg); padding: var(--space-lg); color: #FFFFFF; text-align: center;">
+          <h2 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-xs); color: #FFFFFF;">
+            Ready to Master Industrial Software Engineering?
+          </h2>
+          <p style="font-size: var(--font-size-base); max-width: 600px; margin: 0 auto var(--space-md) auto; opacity: 0.9;">
+            Join DecodeLabs Batch 2026. Elevate your career with project kits, 1-on-1 code reviews, and production-grade architectures.
+          </p>
+          <a href="mailto:decodelabs.tech@gmail.com" class="btn btn-secondary" style="background-color: #FFFFFF; color: var(--color-mocha-dark); font-weight: 700;">
+            Submit Application via Email
+          </a>
+        </section>
+
+      </div>
+
+      <aside id="inspector" class="aside-sidebar" aria-label="Lab Inspector & Quality Metrics">
+        <div class="widget-card" id="breakpoint-widget-card">
+          <div class="widget-title">
+            <span>Viewport Inspector</span>
+            <span id="breakpointBadge" class="badge badge-mocha">Mobile</span>
+          </div>
+          
+          <div class="breakpoint-indicator">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <div>
+              <div style="font-size: var(--font-size-xs); color: var(--color-text-muted);">Current Viewport Width</div>
+              <div id="viewportWidth" class="breakpoint-val">0px</div>
+            </div>
+          </div>
+
+          <div style="font-size: var(--font-size-xs); background-color: var(--color-bg-alt); padding: var(--space-xs); border-radius: var(--radius-sm);">
+            <strong>Active Layout Mode:</strong>
+            <span id="layoutMode" style="display: block; color: var(--color-text-secondary); margin-top: 2px;">Detecting...</span>
+          </div>
+        </div>
+
+        <div class="widget-card" id="wcag-widget-card">
+          <div class="widget-title">
+            <span>Quality Audit</span>
+            <span class="badge badge-success">WCAG 2.1 AA</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: var(--space-xs);">
+            <div class="checklist-item">
+              <span class="checklist-icon">✓</span>
+              <span>Semantic HTML5 Landmarks</span>
+            </div>
+            <div class="checklist-item">
+              <span class="checklist-icon">✓</span>
+              <span>Visible Keyboard Focus Rings</span>
+            </div>
+            <div class="checklist-item">
+              <span class="checklist-icon">✓</span>
+              <span>Screen-Reader ARIA Attributes</span>
+            </div>
+            <div class="checklist-item">
+              <span class="checklist-icon">✓</span>
+              <span>Fluid Clamp Typography</span>
+            </div>
+            <div class="checklist-item">
+              <span class="checklist-icon">✓</span>
+              <span>Zero-Framework Mandate</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="widget-card" style="background: linear-gradient(135deg, var(--color-mocha-light), var(--color-bg-card)); border-color: var(--color-mocha-primary);">
+          <div style="font-size: var(--font-size-xs); font-family: var(--font-family-mono); font-weight: 700; color: var(--color-mocha-dark);">
+            DECODELABS INDUSTRIAL LABS
+          </div>
+          <h4 style="font-size: var(--font-size-base); margin-top: 4px;">Engineering Batch 2026</h4>
+          <p style="font-size: var(--font-size-xs); color: var(--color-text-secondary);">
+            Standardized training & industrial software engineering programs.
+          </p>
+          <div style="margin-top: var(--space-xs); font-size: var(--font-size-xs); color: var(--color-text-muted);">
+            <div>Status: Admissions Open</div>
+            <div>Location: Greater Lucknow, India</div>
+          </div>
+        </div>
+
+      </aside>
+
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="layout-container footer-grid">
+        <div>
+          <div class="brand-logo" style="margin-bottom: var(--space-xs);">
+            <div class="brand-icon">DL</div>
+            <span>DecodeLabs</span>
+          </div>
+          <p style="font-size: var(--font-size-sm); max-width: 380px;">
+            DecodeLabs Industrial Training & Technology Labs (Batch 2026). Full Stack Development & AI Engineering Programs.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-xs); color: var(--color-text-muted);">
+            Navigation
+          </h4>
+          <ul style="display: flex; flex-direction: column; gap: var(--space-2xs); font-size: var(--font-size-sm);">
+            <li><a href="#hero">Overview</a></li>
+            <li><a href="#programs">Training Tracks</a></li>
+            <li><a href="#pillars">Pillars & Blueprint</a></li>
+            <li><a href="#roadmap">Curriculum Roadmap</a></li>
+            <li><a href="#inspector">Lab Inspector</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-xs); color: var(--color-text-muted);">
+            DecodeLabs Contact Info
+          </h4>
+          <ul style="display: flex; flex-direction: column; gap: var(--space-2xs); font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+            <li>📞 +91 89330 06408</li>
+            <li>✉ decodelabs.tech@gmail.com</li>
+            <li>🌎 www.decodelabs.tech</li>
+            <li>📍 Greater Lucknow, India</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="layout-container" style="margin-top: var(--space-lg); padding-top: var(--space-sm); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; font-size: var(--font-size-xs); color: var(--color-text-muted);">
+        <div>&copy; 2026 DecodeLabs. All rights reserved. Industrial Training Labs (Batch 2026).</div>
+        <div style="font-family: var(--font-family-mono);">Pure HTML5 / CSS Grid / Vanilla JS</div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="js/nav.js"></script>
+  <script src="js/breakpoint-widget.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
